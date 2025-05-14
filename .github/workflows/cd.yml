@@ -42,7 +42,7 @@ jobs:
         - name: Install and run migrations
           run: |
             go install github.com/pressly/goose/v3/cmd/goose@latest
-            goose -dir ./migrations postgres "$DATABASE_URL" up
+            ./scripts/migrateup.sh
         
         - name: Deploy to Cloud Run
           run: gcloud run deploy notely --image us-central1-docker.pkg.dev/erudite-azimuth-459818-k2/notely-ar-repo/notely:latest --region us-central1 --allow-unauthenticated --project erudite-azimuth-459818-k2 --max-instances=4
